@@ -1,0 +1,76 @@
+#TESTES = [1,2,3,4,5,6] #BLOQUEIE O DE BAIXO E LIBERE ESSE PARA TESTAR 5 ALUNOS (TOTAL DE TESTES +1)
+TESTES = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101] #BLOQUEIE O DE CIMA E LIBERE ESSE PARA TESTAR 100 ALUNOS (TOTAL DE TESTES +1)
+APROVADOS = 0
+REPROVADOS = 0
+ALUNO = 1
+
+print('--------------------------------------------------------------')
+for testes in TESTES:
+  #if testes == 6: #BLOQUEIE O DE BAIXO E LIBERE ESSE PARA TESTAR 5 ALUNOS (TOTAL DE TESTES +1)
+  if testes == 101: #BLOQUEIE O DE CIMA E LIBERE ESSE PARA TESTAR 100 ALUNOS (TOTAL DE TESTES +1)
+    ALUNOSTESTADOS = testes-1
+    RELATORIOFINAL = (f'RELATÓRIO FINAL DE AVALIAÇÕES\nTOTAL DE ALUNOS AVALIADOS: {ALUNOSTESTADOS}\n\nQUANTIDADE DE ALUNOS APROVADOS: {APROVADOS}\nPORCENTAGEM DE ALUNOS APROVADOS: {PORCENTAGEMAPROVADOS}%\n\nQUANTIDADE DE ALUNOS REPROVADOS: {REPROVADOS}\nPORCENTAGEM DE ALUNOS REPROVADOS: {PORCENTAGEMREPROVADOS}%\n--------------------------------------------------------------')
+    print(RELATORIOFINAL)
+    break
+
+  else:
+    print(f'ALUNO: {ALUNO}')
+
+  AOP1 = float(input('Insira uma nota para a AOP1 (Máximo: 1.0 Ponto): '))
+  if AOP1 > 1 or AOP1 < 0:
+    print('Valor incorreto. Insira uma nota entre 0 a 1 ponto para a AOP1.')
+    print('--------------------------------------------------------------')
+    break
+  else:
+    AOP2 = float(input('Insira uma nota para a AOP2 (Máximo: 2.0 Pontos): '))
+    if AOP2 > 2 or AOP2 < 0:
+      print('Valor incorreto. Insira uma nota entre 0 a 2 pontos para a AOP2.')
+      print('--------------------------------------------------------------')
+      break
+    else:
+      AOP3 = float(input('Insira uma nota para a AOP3 (Máximo: 1.0 Ponto): '))
+      if AOP3 > 1 or AOP3 < 0:
+        print('Valor incorreto. Insira uma nota entre 0 a 1 ponto para a AOP3.')
+        print('--------------------------------------------------------------')
+        break
+      else:
+        PROVAREGULAR = float(input('Insira uma nota para a Prova Regular (Máximo: 6.0 Pontos): '))
+        if PROVAREGULAR > 6 or PROVAREGULAR < 0:
+          print('Valor incorreto. Insira uma nota entre 0 a 6 pontos para a Prova Regular.')
+          print('--------------------------------------------------------------')
+          break
+        else:
+          SM = float(AOP1+AOP2+AOP3+PROVAREGULAR)
+          if SM >= 7:
+            APROVADOS += 1
+            ALUNO += 1
+            PORCENTAGEMAPROVADOS = (APROVADOS/testes)*100
+            PORCENTAGEMREPROVADOS = (REPROVADOS/testes)*100
+            print(f'Aluno(a) APROVADO(A) com Soma do Módulo {SM}.')
+            print('--------------------------------------------------------------')
+
+          else:
+            print(f'O(a) aluno(a) obteve {SM} como Soma do Módulo, portanto fará PROVA DE RECUPERAÇÃO.')
+            PROVARECUPERACAO = float(input('Insira uma nota para a Prova de Recuperação (Máximo: 10.0 Pontos): '))
+            if PROVARECUPERACAO > 10 or PROVARECUPERACAO < 0:
+              print('Valor incorreto. Insira uma nota entre 0 a 10 pontos para a Prova de Recuperação.')
+              print('--------------------------------------------------------------')
+              break
+            else:
+              MM = (AOP1+AOP2+AOP3+PROVAREGULAR+PROVARECUPERACAO)/2
+
+              if MM >= 5:
+                APROVADOS += 1
+                ALUNO += 1
+                PORCENTAGEMAPROVADOS = (APROVADOS/testes)*100
+                PORCENTAGEMREPROVADOS = (REPROVADOS/testes)*100
+                print(f'O(a) aluno(a) se recuperou e foi APROVADO(A) com Média do Módulo {MM}.')
+                print('--------------------------------------------------------------')
+
+              else:
+                REPROVADOS += 1
+                ALUNO += 1
+                PORCENTAGEMAPROVADOS = (APROVADOS/testes)*100
+                PORCENTAGEMREPROVADOS = (REPROVADOS/testes)*100
+                print(f'Aluno(a) REPROVADO(A) com Média do Módulo {MM}.')
+                print('--------------------------------------------------------------')
